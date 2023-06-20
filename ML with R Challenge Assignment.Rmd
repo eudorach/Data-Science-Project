@@ -1,0 +1,55 @@
+---
+title: "ML with R Assignment"
+author: "RSC"
+date: "2023-06-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library('dplyr')
+library('ggplot2')
+df = read.csv('/Users/Rachel/Desktop/myRProjects/housing.csv')
+head(df)
+```
+
+### Ocean Proximity
+
+```{r frequency table, include = FALSE}
+table(df$ocean_proximity)
+```
+``` {r include = FALSE}
+ggplot(
+    data = df, 
+    aes(x = ocean_proximity)) + 
+    geom_point(stat = "count") +
+    theme_light() 
+    ggtitle("Number of Houses by Ocean Proximity")
+```
+
+### 
+
+```{r pop vs households, echo=FALSE}
+ggplot(
+    data = df, 
+    aes(x = population, y = households, color = "#ffccb3")) +
+    geom_point() + 
+    ggtitle("Population vs. Households") +
+    theme_minimal() +
+    theme(legend.position = "none") +
+    xlab("Population") +
+    ylab("Households")
+```
+```{r rooms vs bedrooms, echo=FALSE}
+ggplot(
+    data = df, 
+    aes(x = total_rooms, y = total_bedrooms, color="#007acc")) +
+    geom_point() + 
+    ggtitle("Total Rooms vs. Total Bedrooms") +
+    theme_minimal() +
+    theme(legend.position = "none") +
+    xlab("Total Rooms") +
+    ylab("Total Bedrooms")
+```
+
+
